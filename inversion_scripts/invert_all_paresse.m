@@ -9,7 +9,7 @@
 
 SESS = [1,2,3]; % 3 sessions per subject
 COND = [1,2,3,4]; % A,B,C,D
-SUBJECTS =[1:20]; % 20 subjects
+SUBJECTS =1;% [1:20]; % 20 subjects
 
 Nsubjects = length(SUBJECTS);
 DISPLAY = 0;

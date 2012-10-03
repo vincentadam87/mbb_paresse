@@ -42,7 +42,13 @@ function [ Y,U,IsYout,cond,sess,Counts] = load_data_paresse(i_subject,SESS,COND)
  %root = '/home/vasilisa/Desktop/PARESSE_Vincent/data/paresse_alldata/';
 %root = '/mnt/data/IRMDATA/U610_PARESSE/behaviour/COMP_MODEL/PARESSE_Vincent/data/paresse_alldata/';
 %root = 'C:\Users\vincent.adam\Desktop\Vincent ADAM\Matlab\Demo_toolbox\Data\PARESSE\data\paresse_alldata\';
+
+if isunix || ismac
+root = [fileparts(mfilename('fullpath')),'/data/'];
+elseif ispc
 root = [fileparts(mfilename('fullpath')),'\data\'];
+end
+
 N =24;
 %loading one session
 
