@@ -13,7 +13,7 @@ COND = [1,2,3,4]; % A,B,C,D
 SUBJECTS =[1:20]; % 20 subjects
 
 Nsubjects = length(SUBJECTS);
-
+DISPLAY = 0;
 %
 
 for i_s = SUBJECTS
@@ -25,78 +25,78 @@ for i_s = SUBJECTS
  
    
     % ------ QL FOR REWARDS and WSLS for EFFORT LINEAR   
-    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'QL','WSLS','LINEAR');
+    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'QL','WSLS','LINEAR',DISPLAY);
     INVERSION{i_s}.QLrew_WSeff.LIN.posterior = posterior;
     INVERSION{i_s}.QLrew_WSeff.LIN.out = out;
     
     % ------  QL FOR REWARDS and WSLS for EFFORT HYPERBOLIC   
-    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'QL','WSLS','HYPERBOLIC');
-    INVERSION{i_s}.QLrew_WSLSeff.HYP.posterior = posterior;
-    INVERSION{i_s}.QLrew_WSLSeff.HYP.out = out;
+    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'QL','WSLS','HYPERBOLIC',DISPLAY);
+    INVERSION{i_s}.QLrew_WSeff.HYP.posterior = posterior;
+    INVERSION{i_s}.QLrew_WSeff.HYP.out = out;
    
 %     
     % ----QL FOR EFFORTS and WSLS for REWARD LINEAR    
-    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'WSLS','QL','LINEAR');
+    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'WSLS','QL','LINEAR',DISPLAY);
     INVERSION{i_s}.QLeff_WSrew.LIN.posterior = posterior;
     INVERSION{i_s}.QLeff_WSrew.LIN.out = out;
 %    
     % ----QL FOR EFFORTS and WSLS for REWARD HYPERBOLIC   
-    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'WSLS','QL','HYPERBOLIC');
+    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'WSLS','QL','HYPERBOLIC',DISPLAY);
     INVERSION{i_s}.QLeff_WSrew.HYP.posterior = posterior;
     INVERSION{i_s}.QLeff_WSrew.HYP.out = out;
     
     % ---- QL FOR REWARDS and IDEAL OBSERVER FOR EFFORTS LINEAR    
-    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'QL','IDEAL','LINEAR');
+    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'QL','IDEAL','LINEAR',DISPLAY);
     INVERSION{i_s}.QLrew_IDEALeff.LIN.posterior = posterior;
     INVERSION{i_s}.QLrew_IDEALeff.LIN.out = out;
     
     % ---- QL FOR REWARDS and IDEAL OBSERVER FOR EFFORTS HYPERBOLIC   
-    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'QL','IDEAL','HYPERBOLIC');
+    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'QL','IDEAL','HYPERBOLIC',DISPLAY);
     INVERSION{i_s}.QLrew_IDEALeff.HYP.posterior = posterior;
     INVERSION{i_s}.QLrew_IDEALeff.HYP.out = out;  
  
      
   % ---- QL FOR EFFORTS and IDEAL OBSERVER FOR REWARDS LINEAR     
-    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'IDEAL','QL','LINEAR');
+    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'IDEAL','QL','LINEAR',DISPLAY);
     INVERSION{i_s}.QLeff_IDEALrew.LIN.posterior = posterior;
     INVERSION{i_s}.QLeff_IDEALrew.LIN.out = out;
 
   % ---- QL FOR EFFORTS and IDEAL OBSERVER FOR REWARDS HYPERBOLIC      
-    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'IDEAL','QL','HYPERBOLIC');
+    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'IDEAL','QL','HYPERBOLIC',DISPLAY);
     INVERSION{i_s}.QLeff_IDEALrew.HYP.posterior = posterior;
     INVERSION{i_s}.QLeff_IDEALrew.HYP.out = out;
     
     
     % ---- WSLS FOR REWARDS and IDEAL OBSERVER FOR EFFORTS LINEAR       
-    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'WSLS','IDEAL','LINEAR');
+    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'WSLS','IDEAL','LINEAR',DISPLAY);
     INVERSION{i_s}.WSrew_IDEALeff.LIN.posterior = posterior;
     INVERSION{i_s}.WSrew_IDEALeff.LIN.out = out;
     
     
     % ---- WSLS FOR REWARDS and IDEAL OBSERVER FOR EFFORTS HYPERBOLIC       
-    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'WSLS','IDEAL','HYPERBOLIC');
+    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'WSLS','IDEAL','HYPERBOLIC',DISPLAY);
     INVERSION{i_s}.WSrew_IDEALeff.HYP.posterior = posterior;
-    INVERSION{i_s}.WSrew_IDEALeff.LIN.out = out;
+    INVERSION{i_s}.WSrew_IDEALeff.HYP.out = out;
     
     
     % ---- WSLS FOR EFFORTS and IDEAL OBSERVER FOR REWARDS LINEAR        
-    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'IDEAL','WSLS','LINEAR');
+    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'IDEAL','WSLS','LINEAR',DISPLAY);
     INVERSION{i_s}.WSeff_IDEALrew.LIN.posterior = posterior;
     INVERSION{i_s}.WSeff_IDEALrew.LIN.out = out;
     
     
     % ---- WSLS FOR EFFORTS and IDEAL OBSERVER FOR REWARDS HYPERBOLIC        
-    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'IDEAL','WSLS','HYPERBOLIC');
+    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'IDEAL','WSLS','HYPERBOLIC',DISPLAY);
     INVERSION{i_s}.WSeff_IDEALrew.HYP.posterior = posterior;
     INVERSION{i_s}.WSeff_IDEALrew.HYP.out = out;
     
     % ---- WSLS FOR EFFORTS and WSLS  FOR REWARDS LINEAR        
-    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'WSLS','WSLS','LINEAR');
+    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'WSLS','WSLS','LINEAR',DISPLAY);
     INVERSION{i_s}.WSeff_WSrew.LIN.posterior = posterior;
     INVERSION{i_s}.WSeff_WSrew.LIN.out = out;
     
      % ---- WSLS FOR EFFORTS and WSLS  FOR REWARDS HYPERBOLIC        
-    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'WSLS','WSLS','HYPERBOLIC');
+    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'WSLS','WSLS','HYPERBOLIC',DISPLAY);
     INVERSION{i_s}.WSeff_WSrew.HYP.posterior = posterior;
     INVERSION{i_s}.WSeff_WSrew.HYP.out = out;
     
@@ -104,31 +104,31 @@ for i_s = SUBJECTS
       % ----- for the full QL model test the hypothesis about different or
     % shared Learning rates 
     
-    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'QL','QL','LINEAR','SHARED');
+    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'QL','QL','LINEAR','SHARED',DISPLAY);
     INVERSION{i_s}.QLeff_QLrew.LIN.SHARED.posterior = posterior;
     INVERSION{i_s}.QLeff_QLrew.LIN.SHARED.out = out;
     
-    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'QL','QL','LINEAR','DIFFERENT');
+    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'QL','QL','LINEAR','DIFFERENT',DISPLAY);
     INVERSION{i_s}.QLeff_QLrew.LIN.DIFF.posterior = posterior;
     INVERSION{i_s}.QLeff_QLrew.LIN.DIFF.out = out;
     
     
      % ---- WSLS FOR EFFORTS and WSLS  FOR REWARDS HYPERBOLIC        
-    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'QL','QL','HYPERBOLIC','SHARED');
+    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'QL','QL','HYPERBOLIC','SHARED',DISPLAY);
     INVERSION{i_s}.QLeff_QLrew.HYP.SHARED.posterior = posterior;
     INVERSION{i_s}.QLeff_QLrew.HYP.SHARED.out = out;
     
-    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'QL','QL','HYPERBOLIC','DIFFERENT');
+    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'QL','QL','HYPERBOLIC','DIFFERENT',DISPLAY);
     INVERSION{i_s}.QLeff_QLrew.HYP.DIFF.posterior = posterior;
     INVERSION{i_s}.QLeff_QLrew.HYP.DIFF.out = out;
     
      % ---- WSLS FOR EFFORTS and WSLS  FOR REWARDS LINEAR        
-    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'IDEAL','IDEAL','LINEAR');
+    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'IDEAL','IDEAL','LINEAR',DISPLAY);
     INVERSION{i_s}.IDEALeff_IDEALrew.LIN.posterior = posterior;
     INVERSION{i_s}.IDEALeff_IDEALrew.LIN.out = out;
     
      % ---- WSLS FOR EFFORTS and WSLS  FOR REWARDS HYPERBOLIC        
-    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'IDEAL','IDEAL','HYPERBOLIC');
+    [posterior,out] = invert_paresse_mixed(i_s,SESS,COND,'IDEAL','IDEAL','HYPERBOLIC',DISPLAY);
     INVERSION{i_s}.IDEALeff_IDEALrew.HYP.posterior = posterior;
     INVERSION{i_s}.IDEALeff_IDEALrew.HYP.out = out;
     
@@ -200,14 +200,13 @@ model_names = {'QLrew_WSeff_LIN',...
    'QLrew_IDEALeff_LIN',...
    'QLrew_IDEALeff_HYP', ...
    'QLeff_QLrew_LIN_SHARED',...
-   'QLeff_QLrew_LIN_DIFF'
-   'QLeff_QLrew_HYP_SHARED',
-   'QLeff_QLrew_HYP_DIFF',
-   'WSeff_WSrew_LIN',
-   'WSeff_WSrew_HYP',
-   'IDEALeff_IDEALrew_LIN',
+   'QLeff_QLrew_LIN_DIFF',...
+   'QLeff_QLrew_HYP_SHARED',...
+   'QLeff_QLrew_HYP_DIFF',...
+   'WSeff_WSrew_LIN',...
+   'WSeff_WSrew_HYP',...
+   'IDEALeff_IDEALrew_LIN',...
    'IDEALeff_IDEALrew_HYP'};
-
 
 Nmodels = size(model_names,2);
 %LogEv = zeros(Nsubjects,Nmodels); % Matrix of Log evidences for each subject and model
@@ -216,37 +215,40 @@ LogEv = zeros(Nsubjects,Nmodels);
 for i_s = 1:Nsubjects
     %-------------- 
    % LOG EVIDENCE pour les modeles 
-    LogEv(i_s,1) = INVERSION{i_s}.QLrew_WSeff_LIN.out.F;
-    LogEv(i_s,2) = INVERSION{i_s}.QLrew_WSeff_HYP.out.F;
+    LogEv(i_s,1) = INVERSION{i_s}.QLrew_WSeff.LIN.out.F;
+    LogEv(i_s,2) = INVERSION{i_s}.QLrew_WSeff.HYP.out.F;
     
     
-    LogEv(i_s,3) = INVERSION{i_s}.QLeff_WSrew_LIN.out.F;
-    LogEv(i_s,4) = INVERSION{i_s}.QLeff_WSrew_HYP.out.F;
+    LogEv(i_s,3) = INVERSION{i_s}.QLeff_WSrew.LIN.out.F;
+    LogEv(i_s,4) = INVERSION{i_s}.QLeff_WSrew.HYP.out.F;
     
-    LogEv(i_s,5) = INVERSION_sing{i_s}.WSrew_IDEALeff_LIN.out.F;
-    LogEv(i_s,6) = INVERSION_sing{i_s}.WSrew_IDEALeff_HYP.out.F;
+    LogEv(i_s,5) = INVERSION{i_s}.WSrew_IDEALeff.LIN.out.F;
+    LogEv(i_s,6) = INVERSION{i_s}.WSrew_IDEALeff.HYP.out.F;
     
-    LogEv(i_s,7) = INVERSION{i_s}.WSeff_IDEALrew_LIN.out.F;
-    LogEv(i_s,8) = INVERSION{i_s}.WSeff_IDEALrew_HYP.out.F;
+    LogEv(i_s,7) = INVERSION{i_s}.WSeff_IDEALrew.LIN.out.F;
+    LogEv(i_s,8) = INVERSION{i_s}.WSeff_IDEALrew.HYP.out.F;
     
-    LogEv(i_s,9) = INVERSION{i_s}.QLrew_IDEALeff_LIN.out.F;
-    LogEv(i_s,10) =INVERSION{i_s}.QLrew_IDEALeff_HYP.out.F;
+    LogEv(i_s,9) = INVERSION{i_s}.QLrew_IDEALeff.LIN.out.F;
+    LogEv(i_s,10) =INVERSION{i_s}.QLrew_IDEALeff.HYP.out.F;
     
-    LogEv(i_s,11) = INVERSION{i_s}.QLeff_IDEALrew_LIN.out.F;
-    LogEv(i_s,12) =INVERSION{i_s}.QLeff_IDEALrew_HYP.out.F;
+    LogEv(i_s,11) =INVERSION{i_s}.QLeff_IDEALrew.LIN.out.F;
+    LogEv(i_s,12) =INVERSION{i_s}.QLeff_IDEALrew.HYP.out.F;
     
-    LogEv(i_s,13) = INVERSION{i_s}.QLrew_QLeff_LIN_SHARED.out.F;
-    LogEv(i_s,14) =INVERSION{i_s}.QLrew_QLeff_HYP_SHARED.out.F;
+    LogEv(i_s,13) =INVERSION{i_s}.QLeff_QLrew.LIN.SHARED.out.F;
+    LogEv(i_s,14) =INVERSION{i_s}.QLeff_QLrew.HYP.SHARED.out.F;
    
-    LogEv(i_s,15) = INVERSION{i_s}.QLrew_QLeff_LIN_DIFF.out.F;
-    LogEv(i_s,16) =INVERSION{i_s}.QLrew_QLeff_HYP_DIFF.out.F;
-   
-    LogEv(i_s,17) = INVERSION{i_s}.WSrew_WSeff_LIN.out.F;
-    LogEv(i_s,18) =INVERSION{i_s}.WSrew_WSeff_HYP.out.F;
+    LogEv(i_s,15) =INVERSION{i_s}.QLeff_QLrew.LIN.DIFF.out.F;
+    LogEv(i_s,16) =INVERSION{i_s}.QLeff_QLrew.HYP.DIFF.out.F;
     
-     LogEv(i_s,19) =INVERSION{i_s}.IDEALrew_IDEALeff_LIN.out.F;
-    LogEv(i_s,20) =INVERSION{i_s}.IDEALrew_IDEALeff_HYP.out.F;
+ 
+    LogEv(i_s,17) =INVERSION{i_s}.WSeff_WSrew.LIN.out.F;
+    LogEv(i_s,18) =INVERSION{i_s}.WSeff_WSrew.HYP.out.F;
+    
+    LogEv(i_s,19) =INVERSION{i_s}.IDEALeff_IDEALrew.LIN.out.F;
+    LogEv(i_s,20) =INVERSION{i_s}.IDEALeff_IDEALrew.HYP.out.F;
+
 end
+
 
 %%
 %-- Comparing all models individually
@@ -266,8 +268,20 @@ out_QLfull_vs_QLpartial=group_level_analysis(LogEv,'RFX',{'QL_reward','QL_effort
 pause(1)
 
 partition_SHARED_vs_DIFF = {[13,14],[15,16]};
-out_SHARED_vs_DIFF=group_level_analysis(LogEv,'RFX',{'QL_reward','QL_effort','QL_rew&eff'},partition_SHARED_vs_DIFF)
+out_SHARED_vs_DIFF=group_level_analysis(LogEv,'RFX',{'SHARED','DIFFERENT'},partition_SHARED_vs_DIFF)
 pause(1)
+
+
+%--- full QL vs full IDEAL vs full WSLS  
+partition_fullQL_vs_fullWSLS_fullIDEAL = {[13,14,15,16],[17,18],[19,20]};
+out_fullQL_vs_fullWSLS_vs_fullIDEAL=group_level_analysis(LogEv,'RFX',{'fullQL','fullWSLS','fullIDEAL'},partition_fullQL_vs_fullWSLS_fullIDEAL);
+pause(1); % to update display
+
+
+% miwed QL_IDEAL vs full QL and full IDEAL models
+partition_mixedQL_vs_fullQL_fullIDEAL = {[9,10],[11,12],[13,14,15,16],[19,20]};
+out_mixedQL_vs_fullQL_vs_fullIDEAL=group_level_analysis(LogEv,'RFX',{'QLrewIDeff','QLeffIDrew','fullQL','fullIDEAL'},partition_mixedQL_vs_fullQL_fullIDEAL);
+pause(1); % to update display
 
 %% 
 % muPhi=zeros(numel(SUBJECTS),2);

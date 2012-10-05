@@ -1,4 +1,4 @@
-function [posterior,out] = invert_paresse_mixed(i_subject,SESS,COND,TYPE_REW,TYPE_EFF,DECIDING,UPDATE)
+function [posterior,out] = invert_paresse_mixed(i_subject,SESS,COND,TYPE_REW,TYPE_EFF,DECIDING,UPDATE,DISPLAY)
 % This script performs the inversion of the task 'paresse' for given
 % - subject
 % - sessions & conditions
@@ -40,7 +40,10 @@ try DECIDING;
 catch e;
     DECIDING = [];
 end
-
+try DISPLAY;
+catch e; DISPLAY=0; 
+    
+end
 %----------------------------------------------------------
 % Specifying models
 
@@ -60,7 +63,7 @@ dim = struct('n',4,... % 4Q hidden states
     'n_t',Ntrials); %
 
 
-options.DisplayWin = 0; % display inversion
+options.DisplayWin = DISPLAY; % display inversion
 options.GnFigs = 0;
 options.binomial = 1; % Dealing with binary data
 options.isYout = zeros(1,Ntrials); % Excluding data points
@@ -125,7 +128,7 @@ in_sessions.f_fname =@f_paresse_mixed; % handle of the shared evolution function
 in_sessions.g_fname =@g_paresse_mixed; % handle of the shared observation function
 in_sessions.dim_e = dim_e; % specify extended model's parameter space
 in_sessions.binomial = 1;
-in_sessions.DisplayWin = 1;
+in_sessions.DisplayWin = DISPLAY;
 
 % ---- optional information for evolution and observation functions 
 
@@ -392,9 +395,9 @@ end
 
 % Priors on initial hidden states (values) or initial beleifs of rewards
 % and effort frequencies for the right and left hands 
-x0 = [0.5;0.5;0.5;0.5];
+% x0 = [0.5;0.5;0.5;0.5];
 
-priors.muX0 = repmat(x0,Nsessions,1);
+priors.muX0 = zeros(dim_e.n,1);
 priors.SigmaX0 = 0*eye(dim_e.n); % NO VARIANCE add variance on the priors for initial hidden states 
 
 % No state noise for deterministic update rules
